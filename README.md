@@ -17,7 +17,7 @@ Attend.Helpers <small>(object)</small>
 
 ## How to use
 
-### Step 1 — Component placeholder
+### Step 1 — Add component placeholder to the html
 
 ```html
 <at-test-component></at-test-component>
@@ -25,7 +25,7 @@ Attend.Helpers <small>(object)</small>
 
 
 
-### Step 2 — Make components
+### Step 2 — Add component template and/or object
 
 __Component template:__
 
