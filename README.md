@@ -85,8 +85,9 @@ var cb = new Attend.ComponentBinder(application_element);
 
 
 
-### Step 4 — Polyfills
+### Step 4 — Browser support & polyfills
 
+Attend.js supports IE9 and up.  
 Include the following polyfills if needed:
 
 - [Mutation Observer](https://github.com/Polymer/MutationObservers)

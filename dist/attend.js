@@ -193,6 +193,11 @@ function Component(el, opts) {
   // store reference to self on element
   this.el.component = this;
 
+  // state
+  this.state = {
+    bounded_events: []
+  };
+
   // initialize
   if (this.initialize) this.initialize();
 }
@@ -267,13 +272,58 @@ Component.prototype.destroy = function() {
 //  Events
 //
 Component.prototype.listen_to = function(thing, event, callback) {
-  // todo: store it somewhere, to unbind it later
-  thing.on(event, callback);
+  if (thing.on) {
+    thing.on(event, callback);
+
+    this.state.bounded_events.push({
+      thing: thing,
+      event: event,
+      callback: callback
+    });
+  }
+};
+
+
+Component.prototype.stop_listening_to = function(thing, event, callback) {
+  var events = this.state.bounded_events;
+  var i, j;
+
+  if (thing.off) {
+    thing.off(event, callback);
+  }
+
+  for (i=0, j=events.length; i<j; ++i) {
+    var e = events[i];
+
+    if ((e) &&
+        (e.thing === thing) && (e.event === event)
+        (callback ? (e.callback === callback) : true)) {
+      e.thing = null;
+      e.event = null;
+      e.callback = null;
+      e = null;
+    }
+  }
+
+  events = events.filter(function(x) { return x !== null; });
 };
 
 
 Component.prototype.stop_listening = function() {
-  // todo
+  var events = this.state.bounded_events.splice(0, this.state.bounded_events.length);
+
+  for (var i=0, j=events.length; i<j; ++i) {
+    var e = events[i];
+
+    if (e.thing.off) {
+      e.thing.off(e.event, e.callback);
+    }
+
+    e.thing = null;
+    e.event = null;
+    e.callback = null;
+    e = null;
+  }
 };
 
 
