@@ -1,5 +1,10 @@
 # Attend.js
 
+A component system designed to be minimal and flexible.
+
+
+
+
 ## What makes attend.js
 
 Attend.ComponentBinder <small>(prototype)</small>  
