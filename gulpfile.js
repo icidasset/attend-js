@@ -12,7 +12,9 @@ gulp.task("default", function() {
       "./lib/component.js",
       "./lib/component-binder.js"
     ])
-    // .pipe(uglify())
     .pipe(concat("attend.js"))
+    .pipe(gulp.dest("./dist/"))
+    .pipe(uglify())
+    .pipe(concat("attend.min.js"))
     .pipe(gulp.dest("./dist/"));
 });
