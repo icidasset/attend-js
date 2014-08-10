@@ -22,7 +22,7 @@ Attend.Helpers <small>(object)</small>
 
 ### Step 2 — Make components
 
-Component template:
+__Component template:__
 
 ```html
 <script type="text/html" id="template-test_component">
@@ -37,7 +37,7 @@ Component template:
 
 ---
 
-Component object:
+__Component object:__
 
 ```javascript
 Attend.Components.TestComponent = {
