@@ -88,7 +88,8 @@ var cb = new Attend.ComponentBinder(application_element);
 `Attend.components_prefix` is the prefix that will be used for the component tag names. For example:
 
 ```html
-<at->
+<!-- the default prefix is 'at-' -->
+<at-block></at-block>
 ```
 
 
@@ -110,7 +111,8 @@ Attend.components_storage_object = Attend.Components;
 
 ```javascript
 Attend.Helpers.get_template_element("test_component");
-// this will retrieve the template with the id 'template-test_component'
+// this will retrieve the template with the id 'template-test_component',
+// because the template_name_prefix is equal to 'template-';
 ```
 
 

@@ -1,3 +1,11 @@
+/*
+
+  Attend.js
+  v0.1.0
+
+*/
+
+
 (function() {
 
 "use strict";
@@ -9,9 +17,9 @@ var Attend = {
 
 
 // settings
-Attend.components_prefix = "at";
+Attend.components_prefix = "at-";
 Attend.components_storage_object = Attend.Components;
-Attend.template_name_prefix = "template";
+Attend.template_name_prefix = "template-";
 Attend.default_element_tag_name = "div";
 
 
@@ -40,7 +48,7 @@ var Helpers = {
     options = options || {};
     prefix = options.template_name_prefix || Namespace.template_name_prefix;
 
-    return document.getElementById(prefix + "-" + template_name);
+    return document.getElementById(prefix + template_name);
   },
 
 
@@ -322,7 +330,7 @@ ComponentBinder.prototype.scan_element_for_new_components = function(element) {
   for (var i=0, j=elements.length; i<j; ++i) {
     var el = elements[i];
 
-    if (el.tagName.toLowerCase().indexOf(Namespace.components_prefix + "-") === 0) {
+    if (el.tagName.toLowerCase().indexOf(Namespace.components_prefix) === 0) {
       if (!el.component) wannabe_components.push(el);
     }
   }
@@ -350,7 +358,7 @@ ComponentBinder.prototype.setup_component = function(element) {
   var component;
 
   component_class = component_class.replace(
-    new RegExp("^" + Namespace.components_prefix + "-"),
+    new RegExp("^" + Namespace.components_prefix),
     ""
   );
 
