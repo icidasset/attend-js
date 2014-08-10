@@ -85,6 +85,14 @@ var cb = new Attend.ComponentBinder(application_element);
 
 
 
+### Step 4 — Polyfills
+
+Include the following polyfills if needed:
+
+- [Mutation Observer](https://github.com/Polymer/MutationObservers)
+
+
+
 
 ## Options
 
