@@ -68,10 +68,10 @@ var Helpers = {
     options = options || {};
 
     // gather data
-    attributes = _.result(options, "attributes");
-    id = _.result(options, "id");
-    className = _.result(options, "className");
-    tagName = _.result(options, "tagName") || Namespace.default_element_tag_name;
+    attributes = result(options, "attributes");
+    id = result(options, "id");
+    className = result(options, "className");
+    tagName = result(options, "tagName") || Namespace.default_element_tag_name;
 
     // make element
     element = document.createElement(tagName);
@@ -80,9 +80,11 @@ var Helpers = {
 
     // set attributes
     if (attributes) {
-      _.each(attributes, function(v, k) {
-        element.setAttribute(k, v);
-      });
+      for (var k in attributes) {
+        if (attributes.hasOwnProperty(k)) {
+          element.setAttribute(k, attributes[k]);
+        }
+      }
     }
 
     // html
@@ -94,6 +96,23 @@ var Helpers = {
 
 
 };
+
+
+
+//
+//  Utility functions
+//
+function result(object, property) {
+  if (object == null) return void 0;
+  var value = object[property];
+  return is_function(value) ? value.call(object) : value;
+}
+
+
+function is_function(fn) {
+ var get_type = {};
+ return fn && get_type.toString.call(fn) === "[object Function]";
+}
 
 
 
