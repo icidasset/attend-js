@@ -346,7 +346,11 @@ Namespace.Component = Component;
 //  Constructor
 //
 function ComponentBinder(el) {
-  this.el = this.setup_component(el);
+  if (this.is_component(el)) {
+    this.el = this.setup_component(el);
+  } else {
+    this.el = el;
+  }
 
   this.start_watching();
   this.scan_and_initialize(this.el);
@@ -392,6 +396,11 @@ ComponentBinder.prototype.watch_callback = function(mutations) {
 //
 //  Components
 //
+ComponentBinder.prototype.is_component = function(el) {
+  return (el.tagName.toLowerCase().indexOf(Namespace.components_prefix) === 0);
+};
+
+
 ComponentBinder.prototype.scan_element_for_new_components = function(element) {
   var elements = element.querySelectorAll("*");
   var wannabe_components = [];
@@ -399,8 +408,8 @@ ComponentBinder.prototype.scan_element_for_new_components = function(element) {
   for (var i=0, j=elements.length; i<j; ++i) {
     var el = elements[i];
 
-    if (el.tagName.toLowerCase().indexOf(Namespace.components_prefix) === 0) {
-      if (!el.component) wannabe_components.push(el);
+    if (this.is_component(el) && !el.component) {
+      wannabe_components.push(el);
     }
   }
 
