@@ -145,3 +145,4 @@ Attend.Helpers.get_template_element("test_component");
 ## To do
 
 - Destroy components when they are removed from the DOM
+- Write tests & demo
