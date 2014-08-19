@@ -23,6 +23,10 @@ Attend.Helpers <small>(object)</small>
 <at-test-component></at-test-component>
 ```
 
+<small>*Notes:*</small>
+
+- `<at-test_component></at-test_component>` achieves the same thing
+
 
 
 ### Step 2 — Add component template and/or object
