@@ -1,3 +1,6 @@
+> ### Development discontinued (for now), since [skatejs](https://github.com/skatejs/skatejs) does basically the same thing.
+
+
 # Attend.js
 
 A component system designed to be minimal and flexible.
